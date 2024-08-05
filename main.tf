@@ -18,6 +18,9 @@ resource "azurerm_mssql_database" "swa_db" {
   collation = "SQL_Latin1_General_CP1_CI_AS"
   sku_name = "GP_S_Gen5_2"
   storage_account_type = "Local"
+  min_capacity = 0.5
+  geo_backup_enabled = true
+  auto_pause_delay_in_minutes = 60
 }
 
 resource "azurerm_mssql_firewall_rule" "swa_db" {
@@ -30,5 +33,6 @@ resource "azurerm_mssql_firewall_rule" "swa_db" {
 resource "azurerm_static_web_app" "swa" {
   name = "SWA-Demo"
   resource_group_name = azurerm_resource_group.swa.name
-  location = azurerm_resource_group.swa.location
+  location = "eastasia"
+  
 }
