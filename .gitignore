@@ -388,3 +388,6 @@ MigrationBackup/
 # Custom
 .env
 log.txt
+.terraform
+*.tfstate
+*.tfvars
